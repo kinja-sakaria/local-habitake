@@ -13,7 +13,7 @@ import { paths } from "@/routes/paths";
 import { usePathname } from "next/navigation";
 
 const Header: React.FC = () => {
-  const isLogin = true;
+  const isLogin = false;
   const userRole = "agency";
 
   const [sticky, setSticky] = useState<boolean>(false);

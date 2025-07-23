@@ -42,11 +42,21 @@ export const properties = [
   {
     id: 5,
     image: "/assets/images/property2.jpg",
+    price: "$5,970",
     title: "Modern Villa with Pool",
+    location: "103 Wright Court Burien, WA 98168",
+    bedrooms: 4,
+    bathrooms: 2,
+    views: 20,
   },
   {
     id: 6,
     image: "/assets/images/property1.jpg",
+    price: "$5,970",
     title: "Modern Villa with Pool",
+    location: "103 Wright Court Burien, WA 98168",
+    bedrooms: 4,
+    bathrooms: 2,
+    views: 20,
   },
 ];

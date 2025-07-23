@@ -175,9 +175,13 @@ export default function PublicPropertiesSection({
         className={`mobile:border mobile:border-lightGray mt-3 ${userRole === "buyer" && "mobile:border-none mobile:mt-0"}`}
       />
       <div
-        className={`lg:pt-[60px] lg:pb-8 tablet:pt-[30px] tablet:pb-4 mobile:pt-5 mobile:pb-3 ${userRole === "buyer" && "lg:pt-0 tablet:pt-0 mobile:pt-0"}`}
+        className={`lg:pb-8 tablet:pb-4 mobile:pb-3 ${
+          userRole === "buyer"
+            ? "lg:pt-0 tablet:pt-0 mobile:pt-0"
+            : "lg:pt-[60px] tablet:pt-[30px] mobile:pt-5"
+        }`}
       >
-        <RentBuyBtn userRole={userRole} router={router}/>
+        <RentBuyBtn userRole={userRole} router={router} />
       </div>
       <div
         className="w-full overflow-x-hidden custom-carousel"

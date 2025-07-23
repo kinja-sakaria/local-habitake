@@ -18,9 +18,9 @@ import SubcriptionPlanSection from "@/components/section/after-landing/subcripti
 type UserRole = "buyer" | "seller" | "agency" | string;
 
 export default function LandingPageView() {
-  const isLogin = true;
+  const isLogin = false;
   const router = useRouter();
-  const userRole: UserRole = "buyer";
+  const userRole: UserRole = "seller";
   return (
     <>
       <HeroSection />

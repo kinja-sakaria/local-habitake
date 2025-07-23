@@ -1,4 +1,4 @@
-// File: C:\prometteur-projects\Web-App\habitake-web-app\src\app\(home)\page.tsx
+// File: C:\prometteur-projects\local-habitake\src\app\(home)\page.tsx
 import * as entry from '../../../../src/app/(home)/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

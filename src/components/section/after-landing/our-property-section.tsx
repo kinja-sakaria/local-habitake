@@ -113,17 +113,19 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
       }}
     >
       {userRole === "buyer" && <TopLeftRighIcon />}
-      <p className="text-white font-bold md:text-[28px] mobile:text-lg md:mb-3 mobile:mb-1 md:leading-extra-tight">
+      {userRole !== "buyer" && <PrivateTag />}
+      <p className="text-white font-bold md:text-[28px] mobile:text-lg md:mb-3 mobile:mb-0 md:leading-extra-tight mobile:font-medium">
         {property.price}
       </p>
       <Heading
         variant="h4"
         weight="bold"
-        className="text-white md:leading-extra-tight md:mb-3.5 mobile:mb-1 mobile:text-xl"
+        className="text-white md:leading-extra-tight md:mb-3.5 mobile:mb-1 mobile:text-xl mobile:font-medium"
       >
         {property.title}
       </Heading>
       <div className="flex justify-between items-center mobile:flex-col mobile:justify-start mobile:items-start mobile:gap-y-1">
+        <div>
           <Text
             size="lg"
             weight="normal"
@@ -135,7 +137,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
             />
             {property.location}
           </Text>
-          <div className="flex md:gap-8 mobile:gap-x-3 mobile:gap-y-2 mobile:flex-wrap items-center text-white text-xs md:mt-4">
+          <div className="flex md:gap-8 mobile:gap-x-3 mobile:gap-y-2 mobile:flex-wrap items-center text-white text-xs md:mt-4 mobile:mt-1">
             <div className="flex items-center gap-2.5">
               <BedIcon className="w-6 h-6 mobile:w-5 mobile:h-5" />
               <Text
@@ -170,6 +172,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
                 {property.views} people views
               </Text>
             </div>
+          </div>
         </div>
         {userRole === "buyer" ? (
           <Button
@@ -187,7 +190,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
             rounded="full"
             color="dark"
             variant="contained"
-            className="!md:px-3 mobile:px-2 border-none md:min-w-32 mobile:min-w-6 !min-h-12 !mobile:min-h-5 transition-all duration-500 mobile:text-base"
+            className="!md:px-3 mobile:px-2 border-none md:min-w-32 mobile:min-w-6 !md:min-h-12 mobile:min-h-9 transition-all duration-500 mobile:text-base mobile:self-end"
           >
             Pending Approval
           </Button>
@@ -203,7 +206,10 @@ const TopLeftRighIcon = () => {
   return (
     <>
       <button className="absolute top-4 left-4 w-9 h-9 mobile:w-5 mobile:h-5 bg-white rounded-[10px] flex items-center justify-center text-[#FF0000] z-10">
-        <FontAwesomeIcon icon={faHeart} className="w-5 h-5 mobile:w-2 mobile:h-2" />
+        <FontAwesomeIcon
+          icon={faHeart}
+          className="w-5 h-5 mobile:w-2 mobile:h-2"
+        />
       </button>
       {/* Icons (Top Right) */}
 
@@ -225,8 +231,20 @@ const TopLeftRighIcon = () => {
   );
 };
 
+//Private Tags
+// ---------------------------------------------
+const PrivateTag = () => {
+  return (
+    <>
+      <button className="absolute top-4 left-4 md:px-2.5 py-2 md:h-10 w-[72px] mobile:h-5 bg-white rounded-xl flex items-center justify-center text-[#333A54] z-10 md:text-base mobile:text-sm font-medium md:leading-extra-tight">
+        Private
+      </button>
+    </>
+  );
+};
+
 const PropertiesGrid: React.FC<UseRoleProps> = ({ userRole }) => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [rightActiveIndex, setRightActiveIndex] = useState<number | null>(null);
 
   const leftSideCards = properties.filter((_, index) => (index + 1) % 2 !== 0);
@@ -234,7 +252,7 @@ const PropertiesGrid: React.FC<UseRoleProps> = ({ userRole }) => {
 
   return (
     <div className="lg:pt-[60px] tablet:pt-[30px] mobile:pt-5">
-      <div className="flex w-full justify-center items-center md:gap-10 mobile:gap-0 tablet:flex-col mobile:flex-col">
+      <div className="flex w-full justify-center items-center md:gap-10 tablet:gap-0 mobile:gap-0 tablet:flex-col mobile:flex-col">
         {[leftSideCards, rightSideCards].map((side, columnIdx) => (
           <div
             key={columnIdx}

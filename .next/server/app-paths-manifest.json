@@ -1,4 +1,7 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/(auth)/sign-in/page": "app/(auth)/sign-in/page.js",
   "/(home)/page": "app/(home)/page.js",
-  "/(home)/create-property/page": "app/(home)/create-property/page.js"
+  "/(auth)/sign-up/page": "app/(auth)/sign-up/page.js",
+  "/(auth)/identity-verification/page": "app/(auth)/identity-verification/page.js"
 }
