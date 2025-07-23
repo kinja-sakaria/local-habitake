@@ -11,8 +11,8 @@ export default function AuthLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = usePathname();
   const router = useRouter();
+  const pathname = usePathname();
 
   const imageMap: Record<string, string> = {
     "/sign-in": "assets/images/signin-screen.jpg",

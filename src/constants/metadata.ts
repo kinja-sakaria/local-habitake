@@ -40,4 +40,8 @@ export const authPageMetadata: Record<string, { title: string; description: stri
     title: 'Contact Info | habitake', 
     description: 'Update your contact information on habitake.',
   },
+ 'conversation': {
+    title: 'Chat | habitake',
+    description: 'Connect and communicate with support or your team on habitake.',
+  },
 };

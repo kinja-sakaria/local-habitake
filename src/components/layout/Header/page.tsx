@@ -13,7 +13,7 @@ import { paths } from "@/routes/paths";
 import { usePathname } from "next/navigation";
 
 const Header: React.FC = () => {
-  const isLogin = false;
+  const isLogin = true;
   const userRole = "agency";
 
   const [sticky, setSticky] = useState<boolean>(false);
@@ -118,6 +118,8 @@ const Header: React.FC = () => {
           <HeaderLoggedIn
             sticky={sticky}
             userRole={userRole}
+            pathname={pathname}
+            isBlackBg={isBlackBg}
             navbarOpen={navbarOpen}
             handleScroll={handleScroll}
             setNavbarOpen={setNavbarOpen}
@@ -126,7 +128,8 @@ const Header: React.FC = () => {
         ) : (
           <>
             <div className="container mx-auto  lg:max-w-screen-xl  px-4 py-4 flex items-center justify-between laptop:gap-3 ">
-              <Logo sticky={sticky} />
+              <Logo sticky={sticky} isBlackBg={isBlackBg} />
+
               <nav className="hidden lg:flex flex-grow items-center gap-3 justify-center">
                 {headerData.map((item, index) => (
                   <HeaderLink

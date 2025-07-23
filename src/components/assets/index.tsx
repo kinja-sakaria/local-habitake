@@ -8,6 +8,7 @@ export interface SVGIconProps extends HTMLAttributes<HTMLOrSVGElement> {
 export { default as EyeIcon } from "./icon/EyeIcon";
 export { default as BedIcon } from "./icon/BedIcon";
 export { default as LikeIcon } from "./icon/LikeIcon";
+export { default as SendIcon } from "./icon/SendIcon";
 export { default as PhoneIcon } from "./icon/PhoneIcon";
 export { default as ShareIcon } from "./icon/ShareIcon";
 export { default as PencilIcon } from "./icon/PencilIcon";

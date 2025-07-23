@@ -1,5 +1,5 @@
 import { authPageMetadata } from '@/constants/metadata';
-import SignUpView from '@/components/view/(auth)/SignUpView';
+import SignUpView from '../../../components/view/(auth)/SignInView';
 
 export const metadata = authPageMetadata['sign-up'];
 

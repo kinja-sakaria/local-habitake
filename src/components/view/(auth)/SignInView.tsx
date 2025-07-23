@@ -11,6 +11,7 @@ import TextField from '@/components/elements/TextField'
 
 // Assets
 import { EyeIcon, EyeIconInvisible } from '@/components/assets';
+import { paths } from '@/routes/paths';
 
 
 export default function SignInView() {
@@ -39,7 +40,7 @@ export default function SignInView() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            router.push('/identity-verification');
+            // router.push('/identity-verification');
           }}
         >
           <TextField
@@ -72,7 +73,7 @@ export default function SignInView() {
             textAlign='right'
             className="pt-4 text-green leading-extra-tight"
           >
-            <a href='/forget-password' className='cursor-pointer'>
+            <a href={paths.onboardingScreen.forGetPassword} className='cursor-pointer'>
               Forgot  password ?
             </a>
           </Text>
@@ -83,7 +84,7 @@ export default function SignInView() {
               size='large'
               className="w-full cursor-pointer "
               variant="contained"
-              type='submit'
+              onClick={() => router.push(paths.home)}
             >
               Sign in
             </Button>
@@ -96,7 +97,7 @@ export default function SignInView() {
               className="text-primaryLight pt-4 leading-extra-tight mobile:text-base"
             >
               Don&lsquo;t have an account yet ?
-              <a href='/sign-up' className='text-green font-semibold cursor-pointer'> Sign up</a>
+              <a href= {paths.onboardingScreen.signUp} className='text-green font-semibold cursor-pointer'> Sign up</a>
             </Text>
           </div>
           <div className="flex items-center w-full py-7">

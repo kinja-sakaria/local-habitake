@@ -33,6 +33,8 @@ import { paths } from "@/routes/paths";
 
 interface HeaderLoggedInProps {
   sticky: boolean;
+  pathname: string;
+  isBlackBg: boolean;
   navbarOpen: boolean;
   handleScroll: () => void;
   userRole: "buyer" | "seller" | "agency" | string;
@@ -41,8 +43,10 @@ interface HeaderLoggedInProps {
 }
 
 const HeaderLoggedIn = ({
-  userRole,
   sticky,
+  pathname,
+  userRole,
+  isBlackBg,
   handleScroll,
   navbarOpen,
   setNavbarOpen,
@@ -136,7 +140,7 @@ const HeaderLoggedIn = ({
       <div className="container mx-auto  lg:max-w-screen-xl px-4 py-4 flex items-center justify-between laptop:gap-3 ">
         {/* Logo */}
         <div className="flex items-center gap-14 laptop:gap-6">
-          <Logo sticky={sticky} />
+          <Logo sticky={sticky} isBlackBg={isBlackBg} />
 
           {/* Menu Buttons */}
           {userRole === "buyer" ? (
@@ -219,11 +223,24 @@ const HeaderLoggedIn = ({
               )}
               <div className="w-[1px] h-4 bg-disableGray " />
               {/* Messages */}
-              <FontAwesomeIcon
-                icon={faCommentDots}
-                className="text-white   w-5 h-5 cursor-pointer"
-                onClick={() => router.push(paths.conversation)}
-              />
+              <div
+                className={` cursor-pointer ${
+                  pathname === paths.conversation
+                    ? "text-black bg-white w-6 h-6 rounded-full flex justify-center items-center"
+                    : "text-white"
+                }`}
+              >
+                <FontAwesomeIcon
+                  icon={faCommentDots}
+                  className={` ${
+                    pathname === paths.conversation
+                      ? "w-4 h-4 text-secondaryGreen"
+                      : "text-white w-5 h-5"
+                  }`}
+                  onClick={() => router.push(paths.conversation)}
+                />
+              </div>
+
               <div className="w-[1px] h-4 bg-disableGray" />
               {/* Notifications */}
               <FontAwesomeIcon

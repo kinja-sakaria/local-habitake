@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import Text from '@/components/elements/Text';
 import Button from '@/components/elements/Button';
 import TextField from '@/components/elements/TextField'
+import { paths } from '@/routes/paths';
 
 export default function ForgetPasswordView() {
 
@@ -44,7 +45,8 @@ export default function ForgetPasswordView() {
               size='large'
               className="w-full cursor-pointer"
               variant="contained"
-              type='submit'           
+              type='submit'    
+              onClick={() => router.push(paths.onboardingScreen.resetPassword)}       
             >
              Continue
             </Button>
@@ -57,7 +59,7 @@ export default function ForgetPasswordView() {
               className="text-primaryLight pt-4 leading-extra-tight mobile:text-base"
             >
               Remember your Password ? 
-              <a href='/sign-in' className='text-green font-semibold mobile:font-medium cursor-pointer'> Login Instead</a>
+              <a href={paths.onboardingScreen.signIn} className='text-green font-semibold mobile:font-medium cursor-pointer'> Login Instead</a>
             </Text>
           </div>
         
