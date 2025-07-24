@@ -44,4 +44,16 @@ export const authPageMetadata: Record<string, { title: string; description: stri
     title: 'Chat | habitake',
     description: 'Connect and communicate with support or your team on habitake.',
   },
+ 'contact-us': {
+    title: 'Chat | habitake',
+    description: 'Connect and communicate with support or your team on habitake.',
+  },
+ 'create-property': {
+    title: 'Chat | habitake',
+    description: 'Connect and communicate with support or your team on habitake.',
+  },
+ 'home': {
+    title: 'Chat | habitake',
+    description: 'Connect and communicate with support or your team on habitake.',
+  },
 };

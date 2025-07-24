@@ -31,7 +31,7 @@ const TitleContent = () => {
             variant="contained"
             rounded="medium"
             size="normal"
-            className="text-white md:py-4 mobile:py-2 border-none min-w-32"
+            className="text-white md:py-4 mobile:py-2 border-none min-w-32 cursor-default"
           >
             Testimonial
           </Button>
@@ -40,7 +40,7 @@ const TitleContent = () => {
         <Heading
           variant="h2"
           weight="semibold"
-          className="text-white leading-extra-tight mt-2 mobile:text-4xl"
+          className="text-white leading-extra-tight mt-2 mobile:text-4xl cursor-default"
         >
           Rave Reviews
         </Heading>

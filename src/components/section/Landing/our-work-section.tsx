@@ -150,7 +150,7 @@ export default function OurWorkSection() {
             variant="contained"
             rounded="medium"
             size="normal"
-            className="text-white md:py-4 mobile:py-2 border-none min-w-32"
+            className="text-white md:py-4 mobile:py-2 border-none min-w-32 cursor-default"
           >
             Our Works
           </Button>

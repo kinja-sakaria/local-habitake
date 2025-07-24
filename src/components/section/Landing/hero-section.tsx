@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Text from "@/components/elements/Text";
 
@@ -67,9 +67,37 @@ export default function HeroSection() {
   const [open, setOpen] = useState<"purpose" | "type" | null>(null);
   const [activeTab, setActiveTab] = useState<"buy" | "rent">("buy");
 
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setOpen(null);
+      }
+    }
+
+    function handleScroll() {
+      setOpen(null);
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll, true);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll, true);
+    };
+  }, []);
+
   return (
     <>
-      <section className="relative overflow-visible md:py-48 mobile:pt-28 mobile:pb-16 lg:min-h-screen">
+      <section
+        className="relative overflow-visible md:py-48 mobile:pt-28 mobile:pb-16 lg:min-h-screen"
+        id="main-banner"
+      >
         <div className="md:min-h-[894px] h-full mobile:h-[650px] absolute top-0 left-0 w-full z-0">
           <img
             src="assets/images/hero-section-img.png"
@@ -149,7 +177,10 @@ export default function HeroSection() {
                     className="w-full bg-transparent outline-none md:text-lg mobile:text-sm leading-extra-tight text-white placeholder:text-white/60"
                   />
                 </div>
-                <div className="mobile:flex mobile:flex-row md:contents">
+                <div
+                  ref={dropdownRef}
+                  className="mobile:flex mobile:flex-row md:contents"
+                >
                   <div className="hidden md:block border-l border-white/[12%] h-16" />
                   <div className="flex-1 md:px-2 relative overflow-visible">
                     {/* Purpose */}
@@ -169,8 +200,6 @@ export default function HeroSection() {
                         setOpen(open === "purpose" ? null : "purpose")
                       }
                     />
-
-                    
                   </div>
                   <div className="hidden md:block border-l border-white/[12%] h-16" />
                   {/* Type */}
@@ -187,7 +216,7 @@ export default function HeroSection() {
                     onSelect={setType}
                     isOpen={open === "type"}
                     toggleOpen={() => setOpen(open === "type" ? null : "type")}
-                  />                  
+                  />
                 </div>
                 {/* Search Button */}
                 <div className=" md:self-auto md:ml-4 ">

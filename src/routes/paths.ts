@@ -12,6 +12,7 @@ export const paths = {
     identityVerification: '/identity-verification',
   },
   home: '/',
+  contactus:'/contact-us',
   conversation: '/conversation',
   addproperty: '/create-property',
   propertyDetails: '/property-details',

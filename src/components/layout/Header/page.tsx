@@ -13,9 +13,10 @@ import { paths } from "@/routes/paths";
 import { usePathname } from "next/navigation";
 
 const Header: React.FC = () => {
-  const isLogin = true;
-  const userRole = "agency";
+  const isLogin = localStorage.getItem("isLogin") === "true";
 
+  const userRole: string = localStorage.getItem("role") || "";
+  
   const [sticky, setSticky] = useState<boolean>(false);
   const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("");
@@ -25,8 +26,9 @@ const Header: React.FC = () => {
   const pathname = usePathname();
 
   const blackBgPaths = [
-    paths.conversation,
+    paths.contactus,
     paths.addproperty,
+    paths.conversation,
     paths.propertyDetails,
     paths.propertyListing,
   ];
@@ -204,7 +206,7 @@ const Header: React.FC = () => {
                 ))}
                 <div className="mt-4 flex flex-col space-y-4 w-full">
                   <Link
-                  href={paths.propertyListing}
+                    href={paths.propertyListing}
                     className="border border-disableGray text-primaryBlack px-4 py-2 rounded-3xl hover:bg-primaryBlue hover:text-white"
                   >
                     Explore Listings

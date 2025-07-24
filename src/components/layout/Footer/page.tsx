@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { HabitakeLogoTransparent } from "@/components/assets";
+import { paths } from "@/routes/paths";
 
 export default function Footer() {
   return (
@@ -40,7 +41,7 @@ export default function Footer() {
                 <Link href="/property">Property</Link>
               </li>
               <li>
-                <Link href="/contact">Contact us</Link>
+                <Link href={paths.contactus}>Contact us</Link>
               </li>
               <li>
                 <Link href="/support">Support</Link>

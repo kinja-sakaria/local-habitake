@@ -294,6 +294,7 @@ const HeaderLoggedIn = ({
                 onConfirm={() => {
                   setShowLogoutModal(false);
                   setShowProfileModal(false);
+                 localStorage.setItem("isLogin", 'false');
                 }}
                 onCancel={() => setShowLogoutModal(false)}
               />

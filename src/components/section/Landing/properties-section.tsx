@@ -35,14 +35,14 @@ const TitleContent = ({ router }: TitleContentProps) => {
           variant="contained"
           rounded="medium"
           size="normal"
-          className="text-white md:py-4 mobile:py-2 border-none min-w-32"
+          className="text-white md:py-4 mobile:py-2 border-none min-w-32 cursor-default"
         >
           Properties
         </Button>
         <Heading
           variant="h2"
           weight="semibold"
-          className="text-primaryBlack leading-extra-tight mt-2 mobile:text-4xl"
+          className="text-primaryBlack leading-extra-tight mt-2 mobile:text-4xl cursor-default"
         >
           Latest Properties
         </Heading>
@@ -87,7 +87,7 @@ const RentBuyBtn = ({ userRole }: PropertiesSectionProps) => {
       >
         Rent
       </Button>
-      {userRole === "seller" && (
+      {userRole !=="seller" && (
         <Button
           size="medium"
           rounded="full"
@@ -96,7 +96,7 @@ const RentBuyBtn = ({ userRole }: PropertiesSectionProps) => {
           variant={activeTab === "sale" ? "contained" : "contained"}
           className={`hover:text-white hover:bg-green md:py-4 mobile:py-2 border-none md:min-w-32 mobile:min-w-24`}
         >
-          Sale
+          Sell
         </Button>
       )}
       <Button
