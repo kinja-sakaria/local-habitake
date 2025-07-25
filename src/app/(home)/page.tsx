@@ -1,9 +1,10 @@
-import LandingPageView from "@/components/view/(landing-page)/LandingPageView";
+import LandingpageView from "@/components/view/landing-page/LandingpageView";
+
 
 export default function Home() {
   return (
     <>
-      <LandingPageView />
+     <LandingpageView/>
     </>
   );
 }

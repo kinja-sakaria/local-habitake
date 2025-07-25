@@ -21,7 +21,7 @@ const LogoutModal: React.FC<LogoutModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 transition-opacity duration-300 ease-in-out"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 transition-opacity duration-300 ease-in-out h-full min-h-screen"
       style={{ backdropFilter: "blur(3px)" }}
     >
       <div

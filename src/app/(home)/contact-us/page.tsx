@@ -1,4 +1,4 @@
-import ContactUsView from "@/components/view/(contact-us)/page";
+import ContactUsView from "@/components/view/contact-us/contact-us-view";
 
 export default function Page() {
   return (

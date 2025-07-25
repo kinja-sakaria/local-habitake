@@ -23,3 +23,12 @@ export { default as HabitakeLogo } from "./icon/HabitakeLogo";
 export { default as EyeIconInvisible } from "./icon/EyeIconInvisible";
 export { default as AlertSuccessIcon } from "./icon/AlertSuccessIcon";
 export { default as HabitakeLogoTransparent } from "./icon/HabitakeLogoTransparent";
+
+
+// Property Type
+export { default as RentalIcon}  from './icon/PropertyType/RentalIcon'
+export { default as LuxuryIcon}  from './icon/PropertyType/LuxuryIcon'
+export { default as ShowerIcon}  from './icon/PropertyType/ShowerIcon'
+export { default as BedRoomIcon}  from './icon/PropertyType/BedIcon'
+export { default as CommercialIcon}  from './icon/PropertyType/CommercialIcon';
+export { default as ResidentialIcon}  from './icon/PropertyType/ResidentialIcon'

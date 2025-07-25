@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React, {
@@ -5,22 +6,38 @@ import React, {
   ReactNode,
   useEffect,
   useRef,
-  useState
+  useState,
 } from "react";
 
 interface DropDownProps {
+  error?: string;
   label?: string;
   options: string[];
   className?: string;
   defaultValue?: string;
   rightIcon?: ReactNode;
+  requiredMark?: boolean;
   onChange?: (value: string) => void;
 }
 
 const DropDown = forwardRef<HTMLDivElement, DropDownProps>(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  ({ label, className = "", rightIcon, options, defaultValue, onChange }, _ref) => {
-    const [selectedRole, setSelectedRole] = useState(defaultValue || options[0] || "");
+  (
+    {
+      error,
+      label,
+      className = "",
+      rightIcon,
+      options,
+      defaultValue,
+      requiredMark = false,
+      onChange,
+    },
+    _ref
+  ) => {
+    const [selectedRole, setSelectedRole] = useState(
+      defaultValue || options[0] || ""
+    );
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -48,19 +65,38 @@ const DropDown = forwardRef<HTMLDivElement, DropDownProps>(
     };
 
     return (
-      <div className={`w-full flex flex-col gap-1 ${className}`} ref={dropdownRef}>
-        {label && (
+      <div
+        className={`w-full flex flex-col gap-1 ${className}`}
+        ref={dropdownRef}
+      >
+        {/* {label && (
           <label className="block text-base font-medium text-primaryBlack leading-extra-tight pb-2">
             {label}
           </label>
+        )} */}
+        {label && (
+          <label
+            className={`block text-base font-medium leading-extra-tight pb-2 ${
+              error ? "text-red-600" : "text-primaryBlack"
+            }`}
+          >
+            {label}
+            {requiredMark && (
+              <span className={error ? "text-red-600" : "text-primaryRed"}>
+                {" "}
+                *
+              </span>
+            )}
+          </label>
         )}
-
         <div className="relative">
           <div
             className="py-[14px] px-[18px] h-12 flex items-center justify-between border-[2px] rounded-lg border-lightGray bg-white text-base text-primaryBlack font-medium leading-extra-tight cursor-pointer"
             onClick={() => setIsOpen((prev) => !prev)}
           >
-            <span className="leading-extra-tight font-medium">{selectedRole}</span>
+            <span className="leading-extra-tight font-medium">
+              {selectedRole}
+            </span>
             {rightIcon ? (
               rightIcon
             ) : (
@@ -96,6 +132,7 @@ const DropDown = forwardRef<HTMLDivElement, DropDownProps>(
             </>
           )}
         </div>
+        {error && <p className="text-red-600 text-left text-sm">{error}</p>}
       </div>
     );
   }

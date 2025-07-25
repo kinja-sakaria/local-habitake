@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import { authPageMetadata } from '@/constants/metadata';
 
-const SignUpView = dynamic(() => import('../../../components/view/(auth)/SignUpView'), {
+const SignUpView = dynamic(() => import('../../../components/view/auth/SignUpView'), {
   ssr: false,
 });
 

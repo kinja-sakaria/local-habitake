@@ -220,10 +220,13 @@ export default function HeroSection() {
                 </div>
                 {/* Search Button */}
                 <div className=" md:self-auto md:ml-4 ">
-                  <div className="flex items-center justify-center w-[85px] h-[85px] rounded-xl bg-green cursor-pointer mobile:w-full mobile:h-full mobile:py-4">
+                  <div className="flex items-center justify-center w-[85px] h-[85px] min-w-[85px] min-h-[85px] rounded-xl bg-green cursor-pointer mobile:w-full mobile:h-[60px]">
                     <FontAwesomeIcon
                       icon={faSearch}
-                      className="w-10 h-10 mobile:h-5 mobile:w-5 text-white"
+                      className="w-10 h-10 text-white mobile:w-5 mobile:h-5"
+                      style={{height :'40px',
+                        width:'40px'
+                      }}
                     />
                   </div>
                 </div>

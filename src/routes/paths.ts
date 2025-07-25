@@ -17,5 +17,6 @@ export const paths = {
   addproperty: '/create-property',
   propertyDetails: '/property-details',
   propertyListing: '/property-listing',
+  propertyExplore: '/property-explore',
 };
 

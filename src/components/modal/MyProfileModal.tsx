@@ -62,7 +62,7 @@ const MyProfileModal: React.FC<MyProfileModalProps> = ({
 
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm select-none"
+    <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/40 backdrop-blur-sm select-none h-full min-h-screen"
 >
       <div className="bg-white rounded-2xl  lg:w-[576px] mobile:w-full md:max-h-[calc(100vh-40px)] mobile:max-h-[calc(100vh-120px)] overflow-y-auto">
         <div

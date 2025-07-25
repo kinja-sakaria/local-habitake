@@ -33,12 +33,13 @@ import { paths } from "@/routes/paths";
 
 interface HeaderLoggedInProps {
   sticky: boolean;
-  pathname: string;
+  pathname: string | null;
   isBlackBg: boolean;
   navbarOpen: boolean;
   handleScroll: () => void;
   userRole: "buyer" | "seller" | "agency" | string;
   setNavbarOpen: Dispatch<SetStateAction<boolean>>;
+  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
   mobileMenuRef: React.RefObject<HTMLDivElement>;
 }
 
@@ -51,6 +52,7 @@ const HeaderLoggedIn = ({
   navbarOpen,
   setNavbarOpen,
   mobileMenuRef,
+  setIsModalOpen,
 }: HeaderLoggedInProps) => {
   const router = useRouter();
   const [editMode, setEditMode] = useState(false);
@@ -114,18 +116,41 @@ const HeaderLoggedIn = ({
     };
   }, [navbarOpen, showMobileSearch, showProfileModal, showNotificationModal]);
 
-  // Body overflow hidden
   useEffect(() => {
-    const isAnyModalOpen =
+    const isModalOpen =
       showProfile ||
       showLogoutModal ||
       showProfileModal ||
       isTeamMembersOpen ||
       showNotificationModal;
 
-    document.body.style.overflow = isAnyModalOpen ? "hidden" : "";
-    return () => {
+    if (isModalOpen) {
+      const scrollY = window.scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.overflow = "hidden";
+      document.body.style.width = "100%";
+      setIsModalOpen?.(isModalOpen);
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
       document.body.style.overflow = "";
+      document.body.style.width = "";
+      window.scrollTo(0, parseInt(scrollY || "0") * -1);
+    }
+
+    return () => {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.overflow = "";
+      document.body.style.width = "";
     };
   }, [
     showProfile,
@@ -176,7 +201,12 @@ const HeaderLoggedIn = ({
                 <div className="w-[1px] h-4 bg-disableGray" />
                 <Link
                   href={paths.addproperty}
-                  className="text-white text-lg font-normal lg:leading-extra-tight px-2 py-1.5 hover:bg-green hover:rounded-[20px] laptop:text-sm"
+                  className={`text-white text-lg font-normal lg:leading-extra-tight px-2 py-1.5 hover:bg-green hover:rounded-[20px] laptop:text-sm 
+                      ${
+                        pathname === paths.addproperty
+                          ? "text-white bg-green rounded-[20px]"
+                          : "text-white"
+                      }`}
                 >
                   Add Property
                 </Link>
@@ -294,7 +324,8 @@ const HeaderLoggedIn = ({
                 onConfirm={() => {
                   setShowLogoutModal(false);
                   setShowProfileModal(false);
-                 localStorage.setItem("isLogin", 'false');
+                  router.push(paths.home)
+                  localStorage.setItem("isLogin", "false");
                 }}
                 onCancel={() => setShowLogoutModal(false)}
               />
@@ -368,7 +399,12 @@ const HeaderLoggedIn = ({
             </Link>
             <Link
               href={paths.addproperty}
-              className="border border-disableGray text-primaryBlack px-4 py-2 rounded-3xl hover:bg-green hover:text-white"
+              className={` text-primaryBlack px-4 py-2 rounded-3xl hover:bg-green hover:text-white
+                ${
+                  pathname === paths.addproperty
+                    ? "text-white bg-green "
+                    : "text-primaryBlack border border-disableGray"
+                }`}
             >
               Add Property
             </Link>

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Outfit } from 'next/font/google'
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import { ProgressBar } from "@/components/progress-bar";
 
 
@@ -24,6 +26,18 @@ export default function RootLayout({
     <html lang="en">
       <body className={outfit.className}>
         <ProgressBar/>
+          <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         {children}
       </body>
     </html>

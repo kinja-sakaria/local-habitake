@@ -16,14 +16,15 @@ const Header: React.FC = () => {
   const isLogin = localStorage.getItem("isLogin") === "true";
 
   const userRole: string = localStorage.getItem("role") || "";
-  
+
   const [sticky, setSticky] = useState<boolean>(false);
   const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("");
+  const [isModalOpen , setIsModalOpen] = useState(false);
 
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
-  const pathname = usePathname();
+  const pathname: string | null = usePathname();
 
   const blackBgPaths = [
     paths.contactus,
@@ -31,9 +32,11 @@ const Header: React.FC = () => {
     paths.conversation,
     paths.propertyDetails,
     paths.propertyListing,
+    paths.propertyExplore,
   ];
 
-  const isBlackBg = blackBgPaths.includes(pathname) || sticky;
+ const isBlackBg =  isModalOpen || blackBgPaths.includes(pathname ?? "") || sticky;
+
 
   const handleScroll = () => {
     setSticky(window.scrollY >= 80);
@@ -102,6 +105,23 @@ const Header: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // This disables auto-scroll restoration by browser
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+      }
+
+      // Prevent hash-based scroll on refresh
+      const hasHash = window.location.hash;
+      if (hasHash) {
+        const { pathname, search } = window.location;
+        window.history.replaceState(null, "", pathname + search);
+        window.scrollTo(0, 0); // scrolls to top
+      }
+    }
+  }, []);
+
   return (
     <>
       {/* <header
@@ -110,7 +130,7 @@ const Header: React.FC = () => {
         }`}
       > */}
       <header
-        className={`fixed top-[-3px] z-[99] w-full transition-all duration-300 ${
+        className={`fixed top-0 z-[99] w-full transition-all duration-300 ${
           isBlackBg
             ? "shadow-[0px_4px_4px_0px_rgba(0,0,0,0.05)] backdrop-blur-[60px] bg-primaryBlack"
             : "shadow-none bg-white/10"
@@ -126,6 +146,7 @@ const Header: React.FC = () => {
             handleScroll={handleScroll}
             setNavbarOpen={setNavbarOpen}
             mobileMenuRef={mobileMenuRef}
+            setIsModalOpen = {setIsModalOpen}
           />
         ) : (
           <>

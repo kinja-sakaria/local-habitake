@@ -1,5 +1,5 @@
 import { authPageMetadata } from '@/constants/metadata';
-import ForgetPasswordView from '@/components/view/(auth)/ForgetPasswordView';
+import ForgetPasswordView from '@/components/view/auth/ForgetPasswordView';
 
 export const metadata = authPageMetadata['forget-password'];
 

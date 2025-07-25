@@ -1,5 +1,5 @@
 import { authPageMetadata } from '@/constants/metadata';
-import ResetPasswrodView from '@/components/view/(auth)/ResetPasswordview';
+import ResetPasswrodView from '@/components/view/auth/ResetPasswordview';
 
 export const metadata = authPageMetadata['reset-password'];
 

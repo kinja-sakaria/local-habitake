@@ -1,5 +1,5 @@
 import { authPageMetadata } from '@/constants/metadata';
-import IdentityVerificationView from '@/components/view/(auth)/IdentityVerificationView';
+import IdentityVerificationView from '@/components/view/auth/IdentityVerificationView';
 
 export const metadata = authPageMetadata['identity-verification'];
 

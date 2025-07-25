@@ -4,7 +4,7 @@ interface SVGIconProps extends React.SVGProps<SVGSVGElement> {
   stroke?: string;
 }
 
-const BedIcon: React.FC<SVGIconProps> = ({ ...otherProps }) => {
+const BedRoomIcon: React.FC<SVGIconProps> = ({ ...otherProps }) => {
   return (
     <>
       <svg
@@ -23,4 +23,4 @@ const BedIcon: React.FC<SVGIconProps> = ({ ...otherProps }) => {
     </>
   );
 };
-export default BedIcon;
+export default BedRoomIcon;

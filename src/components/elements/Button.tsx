@@ -8,7 +8,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   variant?: "contained" | "outlined";
   rounded?: "none" | "medium" | "full";
-  color?: "primary" | "dark" | "black" | "gray";
+  color?: "primary" | "dark" | "black" | "gray" | "gray-border";
   size?: "small" | "normal" | "large" | "medium" | "none";
 }
 
@@ -37,6 +37,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     if (color === "gray") {
       if (variant === "contained") return "bg-[#DCDCDC] text-primaryBlack";    
     }
+    if (color === "gray-border") {
+      if (variant === "outlined") return "bg-white border border-lightGray text-primaryBlack";    
+    }
     return "";
   }, [color, variant]);
 
@@ -50,7 +53,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const sizeClass = useMemo(() => {
     if (size === "small") return "min-h-[36px] text-sm px-4";
     if (size === "normal") return "min-h-[34px] text-sm px-2";
-    if (size === "medium") return "min-h-[44px] text-bse px-4";
+    if (size === "medium") return "min-h-[44px] text-base px-4";
     if (size === "large") return "min-h-[56px] text-lg px-6";
     // min-h-[56px]
     return "";
